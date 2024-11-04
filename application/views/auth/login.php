@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in (v2)</title>
+    <title><?= $title ?> - PresensiSummer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -14,16 +14,15 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-navy">
             <div class="card-header text-center">
-                <a href="" class="h1"><b>Admin</b>LTE</a>
+                <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 150px; height: auto;margin-top:2px;">
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
+                <p class="text-center">SummerScape Management System</p>
                 <form action="<?= base_url('dashboard/index') ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -31,7 +30,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -66,7 +65,6 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
-
     <script src="<?= base_url('assets/template-adm') ?>/plugins/jquery/jquery.min.js"></script>
     <script src="<?= base_url('assets/template-adm') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url('assets/template-adm') ?>/dist/js/adminlte.min.js"></script>

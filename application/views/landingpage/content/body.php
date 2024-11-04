@@ -21,7 +21,7 @@
                     <div class="card card-navy card-outline">
                         <div class="card">
                             <div class="card-header">
-                                <span class="p text-gray card-title">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Approved'.</span>
+                                <span class="p text-gray card-title">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Already Present'.</span>
 
                             </div>
                             <!-- /.card-header -->

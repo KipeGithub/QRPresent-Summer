@@ -2,7 +2,7 @@
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                <a href="<?= base_url('landingpage/index') ?>" class="navbar-brand">
+                <a href="<?= base_url('') ?>" class="navbar-brand">
                     <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 150px; height: auto;margin-top:2px;">
                 </a>
 
@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" role="button">
+                        <a class="nav-link" href="<?= base_url('auth') ?>" role="button">
                             <i class='fas fa-sign-in-alt'></i>
                             <span class="badge badge-danger navbar-badge">&nbsp;</span>
                         </a>
