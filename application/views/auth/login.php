@@ -68,23 +68,20 @@
     <script src="<?= base_url('assets/template-adm') ?>/plugins/jquery/jquery.min.js"></script>
     <script src="<?= base_url('assets/template-adm') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url('assets/template-adm') ?>/dist/js/adminlte.min.js"></script>
-    <<<<<<< HEAD <!-- Tambahkan di bagian bawah view Anda, setelah semua konten HTML lainnya -->
-        <script>
-            $(document).ready(function() {
-                // Cek apakah ada flashdata untuk toast
-                <?php if ($this->session->flashdata('toast')) : ?>
-                    var toastData = <?= json_encode($this->session->flashdata('toast')) ?>;
-                    $(document).Toasts('create', {
-                        class: toastData.class,
-                        title: toastData.title,
-                        body: toastData.body
-                    });
-                <?php endif; ?>
-            });
-        </script>
-
-        =======
-        >>>>>>> 203e33c89044df9f4ebf402f0094cb5ea98b0b0a
+    <!-- Tambahkan di bagian bawah view Anda, setelah semua konten HTML lainnya -->
+    <script>
+        $(document).ready(function() {
+            // Cek apakah ada flashdata untuk toast
+            <?php if ($this->session->flashdata('toast')) : ?>
+                var toastData = <?= json_encode($this->session->flashdata('toast')) ?>;
+                $(document).Toasts('create', {
+                    class: toastData.class,
+                    title: toastData.title,
+                    body: toastData.body
+                });
+            <?php endif; ?>
+        });
+    </script>
 </body>
 
 </html>
