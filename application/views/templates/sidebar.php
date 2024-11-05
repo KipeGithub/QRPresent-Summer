@@ -68,7 +68,15 @@
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
+
                 </li>
+                <li class="nav-item">
+
+                    <a href="<?= base_url('Auth/logout'); ?>" class="nav-link" onclick="return confirm('Apakah anda yakin akan keluar dari sistem?')">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.navbar -->

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color: #cea863;">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-navy">

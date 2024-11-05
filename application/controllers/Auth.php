@@ -17,6 +17,21 @@ class Auth extends CI_Controller
 
         $this->load->view('auth/login', $data);
     }
+    public function logout()
+    {
+        // Hapus semua data session
+        $this->session->sess_destroy();
+
+        // Set flashdata untuk notifikasi logout sukses (opsional)
+        $this->session->set_flashdata('toast', [
+            'class' => 'bg-success',
+            'title' => 'Logout Berhasil',
+            'body' => 'Anda telah berhasil logout.'
+        ]);
+
+        // Redirect ke halaman login atau halaman lain yang diinginkan
+        redirect(base_url('Auth'));
+    }
 
     public function proses_login()
     {

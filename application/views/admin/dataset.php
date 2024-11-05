@@ -8,6 +8,132 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modal-lg-tambah-peserta">
+                                <i class="fas fa-plus"></i>
+                                <span> Tambah Peserta Satuan</span>
+                            </button>
+                            <div class="modal fade" id="modal-lg-tambah-peserta">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary text-white">
+                                            <span class="h5 font-weight-bold modal-title">Tambah Peserta Satuan</span>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-validate" method="post" action="<?= base_url('Admin/proses_input_satuan') . '?section=' . $title ?>" enctype="multipart/form-data">
+                                                <?php
+                                                $tanggal = date('Y/m/d');
+                                                ?>
+                                                <input type="hidden" name="tgl_input" value="<?php echo $tanggal; ?>">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <!-- text input -->
+                                                        <div class="form-group">
+                                                            <label>Nama Lengkap</label>
+                                                            <input type="text" class="form-control" name="nama_lengkap" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Nama Depan</label>
+                                                            <input type="text" class="form-control" name="nama_depan" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Nama Belakang</label>
+                                                            <input type="text" class="form-control" name="nama_belakang" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Kelas</label>
+                                                            <select name="kelas" id="kelas" class="form-control" required>
+                                                                <option value="X-ULW">X-ULW</option>
+                                                                <option value="X-PH">X-PH</option>
+                                                                <option value="X-KUL-1">X-KUL-1</option>
+                                                                <option value="X-KUL-2">X-KUL-2</option>
+                                                                <option value="X-KUL-3">X-KUL-3</option>
+                                                                <option value="XI-PAR">XI-PAR</option>
+                                                                <option value="-">-</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Nomor Telepon</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">+62</span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="contact" id="phoneNumber" required oninput="validatePhoneNumber(this)">
+                                                            </div>
+                                                            <small id="error-message" class="text-danger" style="display: none;">Nomor telepon tidak boleh dimulai dengan 0</small>
+                                                        </div>
+                                                        <script>
+                                                            function validatePhoneNumber(input) {
+                                                                input.value = input.value.replace(/\D/g, '');
+                                                                if (input.value.startsWith('0')) {
+                                                                    document.getElementById('error-message').style.display = 'block';
+                                                                } else {
+                                                                    document.getElementById('error-message').style.display = 'none';
+                                                                }
+                                                            }
+                                                        </script>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Plotting Bus</label>
+                                                            <select name="plotting" id="plotting" class="form-control" required>
+                                                                <option value="BUS-1">BUS-1</option>
+                                                                <option value="BUS-2">BUS-2</option>
+                                                                <option value="BUS-3">BUS-3</option>
+                                                                <option value="BUS-4">BUS-4</option>
+                                                                <option value="-">-</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label>Status Peserta</label>
+                                                            <select name="status_peserta" id="status_peserta" class="form-control" required>
+                                                                <option value="SISWA">SISWA</option>
+                                                                <option value="GURU">GURU</option>
+                                                                <option value="-">-</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <?php if ($this->session->userdata('level') === '0'): ?>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label class="text-danger">Status Presensi*</label>
+                                                                <select name="status_presensi" id="status_presensi" class="form-control is-invalid" required>
+                                                                    <option value="PREPARE">PREPARE</option>
+                                                                    <option value="SUCCESS">SUCCESS</option>
+                                                                    <option value="FAILED">FAILED</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda yakin Data Sudah Benar? Harap perhatikan kembali isian data untuk menghindari terjadinya sistem eror.')">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead class="text-center">
                                     <tr class="text-uppercase text-white align-center">
@@ -51,8 +177,8 @@
                                                 <a href="#" class="btn btn-circle btn-warning btn-sm" data-toggle="modal" data-target="#edit_peserta<?= $gl->id_peserta ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete" data-delete="<?= $gl->id_peserta ?>">
-                                                    <i class="fas fa-trash"></i>
+                                                <a href="<?= site_url('admin/delete_peserta/' . $gl->id_peserta . '?section=' . $title) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin Data Peserta akan dihapus permanen?')">
+                                                    <i class=" fas fa-trash"></i>
                                                 </a>
 
                                             </td>
@@ -65,60 +191,139 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- Modal Default -->
-        <div class="modal fade" id="modal-delete">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Konfirmasi Hapus</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <?php foreach ($get_live as $gl): ?>
+            <div class="modal fade" id="edit_peserta<?= $gl->id_peserta ?>">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <span class="h5 font-weight-bold modal-title">Edit Peserta</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-validate" method="post" action="<?= base_url('Admin/edit_peserta/') . $gl->id_peserta . '?section=' . $title ?>" enctype="multipart/form-data">
+                                <?php
+                                $tanggal = date('Y/m/d');
+                                ?>
+                                <input type="hidden" name="tgl_input" value="<?php echo $tanggal; ?>">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Nama Lengkap</label>
+                                            <input type="text" class="form-control" name="nama_lengkap" value="<?= $gl->nama_lengkap ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Nama Depan</label>
+                                            <input type="text" class="form-control" name="nama_depan" value="<?= $gl->nama_depan ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Nama Belakang</label>
+                                            <input type="text" class="form-control" name="nama_belakang" value="<?= $gl->nama_belakang ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Kelas</label>
+                                            <select name="kelas" id="kelas" class="form-control" required>
+                                                <option value="<?= $gl->kelas ?>"><?= $gl->kelas ?></option>
+                                                <option value="X-ULW">X-ULW</option>
+                                                <option value="X-PH">X-PH</option>
+                                                <option value="X-KUL-1">X-KUL-1</option>
+                                                <option value="X-KUL-2">X-KUL-2</option>
+                                                <option value="X-KUL-3">X-KUL-3</option>
+                                                <option value="XI-PAR">XI-PAR</option>
+                                                <option value="-">-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Nomor Telepon</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">+62</span>
+                                                </div>
+                                                <input type="text" class="form-control" name="contact" value="<?= $gl->contact ?>" id="phoneNumber" required oninput="validatePhoneNumber(this)">
+                                            </div>
+                                            <small id="error-message" class="text-danger" style="display: none;">Nomor telepon tidak boleh dimulai dengan 0</small>
+                                        </div>
+                                        <script>
+                                            function validatePhoneNumber(input) {
+                                                input.value = input.value.replace(/\D/g, '');
+                                                if (input.value.startsWith('0')) {
+                                                    document.getElementById('error-message').style.display = 'block';
+                                                } else {
+                                                    document.getElementById('error-message').style.display = 'none';
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Plotting Bus</label>
+                                            <select name="plotting" id="plotting" class="form-control" required>
+                                                <option value="<?= $gl->plotting ?>"><?= $gl->plotting ?></option>
+                                                <option value="BUS-1">BUS-1</option>
+                                                <option value="BUS-2">BUS-2</option>
+                                                <option value="BUS-3">BUS-3</option>
+                                                <option value="BUS-4">BUS-4</option>
+                                                <option value="-">-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Status Peserta</label>
+                                            <select name="status_peserta" id="status_peserta" class="form-control" required>
+                                                <option value="<?= $gl->status_peserta ?>"><?= $gl->status_peserta ?></option>
+                                                <option value="SISWA">SISWA</option>
+                                                <option value="GURU">GURU</option>
+                                                <option value="-">-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php if ($this->session->userdata('level') === '0'): ?>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="text-danger">Status Presensi*</label>
+                                                <select name="status_presensi" id="status_presensi" class="form-control is-invalid" required>
+                                                    <option value="<?= $gl->status_presensi ?>"><?= $gl->status_presensi ?></option>
+                                                    <option value="PREPARE">PREPARE</option>
+                                                    <option value="SUCCESS">SUCCESS</option>
+                                                    <option value="FAILED">FAILED</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($this->session->userdata('level') === '1'): ?>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="text-danger">Status Presensi*</label>
+                                                <select name="status_presensi" id="status_presensi" class="form-control is-invalid" required>
+                                                    <option value="<?= $gl->status_presensi ?>"><?= $gl->status_presensi ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda yakin Data Sudah Benar? Harap perhatikan kembali isian data untuk menghindari terjadinya sistem eror.')">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
                     </div>
-                    <div class="modal-body">
-                        <p>Apakah Anda yakin ingin menghapus data dengan ID: <span id="modal-id"></span>?</p>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-danger" id="confirm-delete">Hapus</button>
-                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
-        </div>
-
-        <script type="text/javascript">
-            // Mengatur event listener untuk tombol modal
-            $(document).on('click', '[data-toggle="modal"]', function() {
-                const id = $(this).data('delete'); // Ambil ID dari atribut data-delete
-                $('#modal-id').text(id); // Tampilkan ID di dalam modal
-                console.log('data'.id); // Debug: cetak ID ke konsol
-            });
-
-            // Fungsi untuk konfirmasi hapus
-            $('#confirm-delete').on('click', function() {
-                const id = $('#modal-id').text(); // Ambil ID yang ditampilkan
-                // Lakukan redirect atau ajax ke controller delete
-                window.location.href = '<?= site_url('Admin/delete_peserta/') ?>' + id; // Ganti dengan URL delete sesuai kebutuhan
-            });
-        </script>
-
-
-
-        <!-- Tambahkan di bagian bawah view Anda, setelah semua konten HTML lainnya -->
-        <script>
-            $(document).ready(function() {
-                // Cek apakah ada flashdata untuk toast
-                <?php if ($this->session->flashdata('toast')) : ?>
-                    var toastData = <?= json_encode($this->session->flashdata('toast')) ?>;
-                    $(document).Toasts('create', {
-                        class: toastData.class,
-                        title: toastData.title,
-                        body: toastData.body
-                    });
-                <?php endif; ?>
-            });
-        </script>
+        <?php endforeach; ?>

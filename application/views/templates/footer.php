@@ -8,9 +8,6 @@
 </div>
 <!-- ./wrapper -->
 
-
-
-
 <!-- jQuery -->
 <script src="<?= base_url('assets/template-adm') ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -50,6 +47,19 @@
             "autoWidth": false,
             "responsive": true,
         });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        // Cek apakah ada flashdata untuk toast
+        <?php if ($this->session->flashdata('toast')) : ?>
+            var toastData = <?= json_encode($this->session->flashdata('toast')) ?>;
+            $(document).Toasts('create', {
+                class: toastData.class,
+                title: toastData.title,
+                body: toastData.body
+            });
+        <?php endif; ?>
     });
 </script>
 </body>

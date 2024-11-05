@@ -21,3 +21,8 @@ PINDAH DARI MASTER MENJADI MAIN (JIKA TERJADI ERROR KETIKA PUSH):
 git branch -M main
 git push -u origin main
 
+BESOK AGENDA
+
+A. Dataset:
+- Tampilkan QRCODE
+- Buat unduh dinamis keputusannya menggunakan PDF, QR Online, dan View untuk tata letak, dan via ZIP 

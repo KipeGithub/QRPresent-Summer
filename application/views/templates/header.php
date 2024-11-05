@@ -16,5 +16,5 @@
     <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/dist/css/adminlte.min.css">
-
+    <link rel="stylesheet" href="<?= base_url('assets/template-adm') ?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 </head>
