@@ -1,0 +1,23 @@
+CARA IMPORT ATAU UPDATE REPOSITORY:
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin <URL-repo-GitHub>
+git push -u origin main
+
+JIKA REPOSITORY DI LOKAL BELUM ADA SAMA SEKALI, CARA DOWNLOADNYA DI CLONE:
+git clone <URL-repo-GitHub>
+
+KETIKA INGIN MENGAMBIL REPOSITORY DARI GITHUB YANG TERBARU, LAKUKAN:
+git pull origin main
+git pull origin main --rebase (mengganti semua local dengan repo terupdate dari git)
+
+
+CARA CEK BRANCH LOKAL:
+git branch
+
+PINDAH DARI MASTER MENJADI MAIN (JIKA TERJADI ERROR KETIKA PUSH):
+git branch -M main
+git push -u origin main
+
