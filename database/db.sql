@@ -39,15 +39,12 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `email`, `password`, `level`) VALUES
-(1, 'superadmin@example.com', '$2y$10$Ephxvp8GnW8q5MBm2j3zMuJ3wz/B/Op5ziw6SHd6HoIdSYyFk5qxS', '0'),
-(2, 'admin@example.com', '$2y$12$QjSH496pcT5CEbzjD/vtVeH03tfHKFy36d4J0Ltp3lRtee9HDxY3K', '1');
-
+(1, 'superadmin@example.com', '$2y$10$lu/tDArNQnkPHMTOk0a1qe8tN/J.wtbVvFoPZSpWSNiH5qhBcdr4e', '0'),
+(2, 'admin@example.com', '$2y$10$Ax1zueUUn85LKg3322Axpun1Tst1uf.r3/qgWJpAC6JB93MJck/sy', '1');
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `peserta_master`
 --
-
 CREATE TABLE `peserta_master` (
   `id_peserta` int(11) NOT NULL,
   `nama_lengkap` varchar(100) DEFAULT NULL,

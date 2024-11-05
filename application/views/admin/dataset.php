@@ -5,7 +5,6 @@
                     <div class="card">
                         <div class="card-header">
                             <span class="p text-gray card-title">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Already Present'.</span>
-
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -103,7 +102,7 @@
             $('#confirm-delete').on('click', function() {
                 const id = $('#modal-id').text(); // Ambil ID yang ditampilkan
                 // Lakukan redirect atau ajax ke controller delete
-                window.location.href = '<?= base_url('Admin/delete_peserta/') ?>' + id; // Ganti dengan URL delete sesuai kebutuhan
+                window.location.href = '<?= site_url('Admin/delete_peserta/') ?>' + id; // Ganti dengan URL delete sesuai kebutuhan
             });
         </script>
 

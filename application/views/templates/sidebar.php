@@ -77,7 +77,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="align-middle">
-                <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape_2.png" alt="Logo Summer" class="brand-image align-center" style="width: 120px; height: auto;margin-left:60px;">
+                <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape_2.png" alt="Logo Summer" class="brand-image align-center" style="width: 120px; height: auto;margin-left:60px;margin-top:20px;">
                 <span class=" font-weight-light">&nbsp;</span>
             </a>
 
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('admin/importdata?section=Import Data') ?>" class="nav-link <?php if ($this->input->get('section') === 'Import Data') echo 'active'; ?>">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>
                                     Import Data (.xls)
@@ -165,7 +165,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('admin/scancam?section=Scan Absent') ?>" class="nav-link <?php if ($this->input->get('section') === 'Scan Absent') echo 'active'; ?>">
                                 <i class="nav-icon fas fa-camera"></i>
                                 <p>
                                     Scan Absent
@@ -186,7 +186,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="m-0"><?= $title ?> Menu</h1>
+                            <h1 class="m-0 font-weight-bold"><?= $title ?> Menu</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->

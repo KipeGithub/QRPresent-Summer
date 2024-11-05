@@ -30,7 +30,6 @@
 <script src="<?= base_url('assets/template-adm') ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/template-adm') ?>/dist/js/adminlte.min.js"></script>
-<script src="<?= base_url('assets/template-adm'); ?>plugins/sweetalert2.all.min.js"></script>
 
 
 <!-- Page specific script -->
