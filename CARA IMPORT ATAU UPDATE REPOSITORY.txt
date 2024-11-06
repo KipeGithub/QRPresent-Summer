@@ -23,6 +23,6 @@ git push -u origin main
 
 BESOK AGENDA
 
-A. Dataset:
-- Tampilkan QRCODE (DONE)
-- Buat unduh dinamis keputusannya menggunakan PDF, QR Online, dan View untuk tata letak, dan via ZIP (DONE)
+LANDING PAGE:
+- nama lengkap ada tulisan new update dan naikan paling atas jika status berubah time_approve
+- pas bagian check in scanner tambahkan time_approve NOW

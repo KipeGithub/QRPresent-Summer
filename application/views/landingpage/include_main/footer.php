@@ -30,21 +30,24 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            "searching": false,
+            "buttons": [],
+            "info": false,
+            "scrollCollapse": true,
+        });
     });
 </script>
 <style>
     .compact-table td,
     .compact-table th {
-        padding: 4px 8px !important;
-        font-size: 15px;
+        padding: 2px 6px !important;
+        font-size: 12px;
         vertical-align: middle;
     }
 
     .compact-table .btn {
-        padding: 2px 6px !important;
-        font-size: 13px;
+        padding: 1px 5px !important;
+        font-size: 9px;
     }
 </style>
 </body>
