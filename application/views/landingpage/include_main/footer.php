@@ -40,14 +40,14 @@
 <style>
     .compact-table td,
     .compact-table th {
-        padding: 2px 6px !important;
-        font-size: 12px;
+        padding: 0.8px 5px !important;
+        font-size: 14px;
         vertical-align: middle;
     }
 
     .compact-table .btn {
         padding: 1px 5px !important;
-        font-size: 9px;
+        font-size: 12px;
     }
 </style>
 </body>

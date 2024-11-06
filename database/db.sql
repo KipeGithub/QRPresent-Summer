@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2024 at 05:42 PM
+-- Generation Time: Nov 06, 2024 at 10:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -41,10 +41,13 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`id`, `email`, `password`, `level`) VALUES
 (1, 'superadmin@example.com', '$2y$10$lu/tDArNQnkPHMTOk0a1qe8tN/J.wtbVvFoPZSpWSNiH5qhBcdr4e', '0'),
 (2, 'admin@example.com', '$2y$10$Ax1zueUUn85LKg3322Axpun1Tst1uf.r3/qgWJpAC6JB93MJck/sy', '1');
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `peserta_master`
 --
+
 CREATE TABLE `peserta_master` (
   `id_peserta` int(11) NOT NULL,
   `nama_lengkap` varchar(100) DEFAULT NULL,
@@ -55,15 +58,21 @@ CREATE TABLE `peserta_master` (
   `plotting` varchar(50) DEFAULT NULL,
   `status_peserta` varchar(20) DEFAULT NULL,
   `barcode` varchar(225) DEFAULT NULL,
-  `status_presensi` varchar(20) DEFAULT NULL
+  `status_presensi` varchar(20) DEFAULT NULL,
+  `tgl_input` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `peserta_master`
 --
 
-INSERT INTO `peserta_master` (`id_peserta`, `nama_lengkap`, `nama_depan`, `nama_belakang`, `kelas`, `contact`, `plotting`, `status_peserta`, `barcode`, `status_presensi`) VALUES
-(1, 'Amelia Putri Noviansyah', 'Amelia', 'Noviansyah', 'X ULW', '6283840416978', 'BUS-1', 'SISWA', NULL, 'PREPARE');
+INSERT INTO `peserta_master` (`id_peserta`, `nama_lengkap`, `nama_depan`, `nama_belakang`, `kelas`, `contact`, `plotting`, `status_peserta`, `barcode`, `status_presensi`, `tgl_input`) VALUES
+(1, 'Amelia Putri Noviansyah', 'Amelia', 'Noviansyah', 'X-ULW', '6283840416978', 'BUS-1', 'SISWA', 'cek', 'PREPARE', NULL),
+(2, 'Dummy Kipe', 'Kipe', '2', 'X-KUL-3', '86135451', 'BUS-2', 'GURU', 'http://localhost/ParTel-Presensi/checkingQR/2', 'SUCCESS', '2024-11-06'),
+(3, '1', '1', '1', 'X-ULW', '453434', 'BUS-1', 'SISWA', 'http://localhost/ParTel-Presensi/checkingQR/3', 'PREPARE', '2024-11-06'),
+(7, 'Excel Checking 1', 'Excel', 'checking 1', 'X-ULW', '46465', 'BIS-1', 'SISWA', 'checkingQR/7', 'SUCCESS', '2024-11-06'),
+(8, 'Excel Checking 2', 'Excel', 'checking 2', 'X-PH', '1231312', 'BIS-2', 'GURU', 'checkingQR/8', 'PREPARE', '2024-11-06'),
+(9, 'Excel Checking 3', 'Excel', 'checking 3', 'X-KUL-1', '123131', 'BIS-3', 'SISWA', 'checkingQR/9', 'PREPARE', '2024-11-06');
 
 --
 -- Indexes for dumped tables
@@ -96,7 +105,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `peserta_master`
 --
 ALTER TABLE `peserta_master`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
