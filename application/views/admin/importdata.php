@@ -5,7 +5,11 @@
              <div class="card-header">
                  <span class="p text-white card-title" style="font-size: 14px;">Silahkan menguduh dan mengisi "Contoh Formal Excel" jika ingin mengimport dataset baru untuk menghindari terjadinya sistem error.</span>
              </div>
-             <form method="post" action="<?= site_url('admin/import_data_sertifikat?section=' . $title) ?>" enctype="multipart/form-data">
+             <form method="post" action="<?= site_url('admin/importdatapeserta?section=' . $title) ?>" enctype="multipart/form-data">
+                 <?php
+                    $tanggal = date('Y/m/d');
+                    ?>
+                 <input type="hidden" name="tgl_input" value="<?php echo $tanggal; ?>">
                  <div class="card-body ">
                      <div class="form-row ">
                          <div class="col-lg-3">

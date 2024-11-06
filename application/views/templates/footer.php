@@ -50,6 +50,30 @@
     });
 </script>
 <script>
+    // Toggle "Select All" functionality
+    document.getElementById("selectAll").addEventListener("click", function() {
+        var checkboxes = document.querySelectorAll(".select-row");
+        checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+        toggleDownloadButton();
+    });
+
+    // Show or hide the download button based on selection
+    document.querySelectorAll(".select-row").forEach(checkbox => {
+        checkbox.addEventListener("change", toggleDownloadButton);
+    });
+
+    function toggleDownloadButton() {
+        var anyChecked = Array.from(document.querySelectorAll(".select-row")).some(checkbox => checkbox.checked);
+        document.getElementById("downloadZip").style.display = anyChecked ? "block" : "none";
+    }
+
+    // Handle the download action
+    document.getElementById("downloadZip").addEventListener("click", function() {
+        var selected = Array.from(document.querySelectorAll(".select-row:checked")).map(cb => cb.value);
+        window.location.href = "<?= site_url('admin/download_zip') ?>?ids=" + selected.join(",");
+    });
+</script>
+<script>
     $(document).ready(function() {
         // Cek apakah ada flashdata untuk toast
         <?php if ($this->session->flashdata('toast')) : ?>

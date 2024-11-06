@@ -1,7 +1,8 @@
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-            <div class="container">
+            <div class="container-fluid">
+
                 <a href="<?= base_url('') ?>" class="navbar-brand">
                     <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 150px; height: auto;margin-top:2px;">
                 </a>

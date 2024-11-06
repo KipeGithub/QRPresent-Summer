@@ -41,6 +41,9 @@
                         </ul>
                     </div>
                     <!-- Scan Results -->
+                    <div v-if="notification.message" :class="`alert ${notification.class}`" role="alert">
+                        {{ notification.message }}
+                    </div>
                     <div>
                         <span class="p font-weight-bold">Data hasil Scanning QR</span>
                         <div v-if="peserta">
@@ -108,7 +111,11 @@
             scanner: null,
             activeCameraId: null,
             cameras: [],
-            peserta: null // Data peserta yang ditampilkan setelah scan
+            peserta: null,
+            notification: {
+                message: '',
+                class: ''
+            }
         },
         mounted: function() {
             var self = this;
@@ -117,7 +124,8 @@
                 scanPeriod: 5
             });
             self.scanner.addListener('scan', function(content) {
-                self.fetchPesertaData(content); // Ambil data peserta berdasarkan hasil scan
+                var idPeserta = content.split('/').pop();
+                self.fetchPesertaData(idPeserta);
             });
             Instascan.Camera.getCameras().then(function(cameras) {
                 self.cameras = cameras;
@@ -139,29 +147,47 @@
                 this.activeCameraId = camera.id;
                 this.scanner.start(camera);
             },
-            fetchPesertaData: function(barcode) {
+            fetchPesertaData: function(idPeserta) {
                 var self = this;
-                // Ambil data peserta berdasarkan barcode via AJAX
-                fetch(`<?= base_url('admin/get_peserta_by_barcode') ?>/${barcode}`)
+                fetch(`<?= base_url('admin/get_peserta_by_id') ?>/${idPeserta}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data) {
-                            self.peserta = data; // Set data peserta jika ditemukan
+                            self.peserta = data;
                         } else {
-                            alert('Peserta tidak ditemukan');
+                            self.showNotification('Peserta tidak ditemukan', 'alert-danger');
                         }
                     })
                     .catch(error => console.error('Error:', error));
             },
             checkIn: function() {
                 if (this.peserta) {
-                    // Mengubah status presensi menjadi SUCCESS
-                    this.peserta.status_presensi = 'SUCCESS';
+                    var self = this;
+                    fetch(`<?= base_url('admin/checkingQR') ?>/${this.peserta.id_peserta}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                self.showNotification(data.message, 'alert-success');
+                                self.reset();
+                            } else if (data.status === 'warning') {
+                                self.showNotification(data.message, 'alert-warning');
+                            } else {
+                                self.showNotification(data.message, 'alert-danger');
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
                 }
             },
             reset: function() {
-                // Reset data peserta untuk scan berikutnya
                 this.peserta = null;
+                this.notification = {
+                    message: '',
+                    class: ''
+                };
+            },
+            showNotification: function(message, alertClass) {
+                this.notification.message = message;
+                this.notification.class = alertClass;
             }
         }
     });

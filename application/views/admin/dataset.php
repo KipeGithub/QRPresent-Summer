@@ -137,6 +137,9 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead class="text-center">
                                     <tr class="text-uppercase text-white align-center">
+                                        <th class="align-middle bg-navy">
+                                            <input type="checkbox" id="selectAll"> <!-- Checkbox untuk memilih semua -->
+                                        </th>
                                         <th class="align-middle bg-navy">NAMA LENGKAP</th>
                                         <th class="align-middle bg-navy">NAMA DEPAN</th>
                                         <th class="align-middle bg-navy">NAMA BELAKANG</th>
@@ -152,17 +155,48 @@
                                 <tbody class="text-center">
                                     <?php
                                     $no = 1;
-                                    foreach ($get_live as $gl) :
+                                    foreach ($get_live as $index => $gl) :
                                     ?>
                                         <tr>
-                                            <td><?= $gl->nama_lengkap ?></td>
+                                            <td>
+                                                <input type="checkbox" class="select-row" name="selected_peserta[]" value="<?= $gl->id_peserta ?>">
+                                            </td>
+                                            <td>
+                                                <?= $gl->nama_lengkap ?>
+                                                <?php
+                                                $tanggal = date('Y-m-d');
+                                                if ($gl->tgl_input == $tanggal):
+                                                ?>
+                                                    <span class="right badge badge-success">New Data</span>
+                                                <?php endif; ?>
+                                            </td>
+
                                             <td><?= $gl->nama_depan ?></td>
                                             <td><?= $gl->nama_belakang ?></td>
                                             <td><?= $gl->kelas ?></td>
                                             <td><?= $gl->contact ?></td>
                                             <td><?= $gl->plotting ?></td>
                                             <td><?= $gl->status_peserta ?></td>
-                                            <td><?= $gl->barcode ?></td>
+                                            <td>
+                                                <a id="downloadQR<?= $index ?>" class="d-flex justify-content-center">
+                                                    <div id="qrcodeContainer<?= $index ?>">
+                                                        <div id="qrcode<?= $index ?>"></div>
+                                                    </div>
+                                                </a>
+                                                <!-- <?= $gl->barcode ?> -->
+                                            </td>
+                                            <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+                                            <script>
+                                                <?php if (!empty($gl->barcode)) : ?>
+                                                    new QRCode("qrcode<?= $index ?>", {
+                                                        text: "<?= $gl->barcode ?>",
+                                                        width: 80,
+                                                        height: 80
+                                                    });
+                                                <?php else : ?>
+                                                    document.getElementById("qrcode<?= $index ?>").innerHTML = "Tidak Ada QR";
+                                                <?php endif; ?>
+                                            </script>
                                             <td>
                                                 <?php if ($gl->status_presensi == 'PREPARE') :
                                                     $class = 'warning';
@@ -177,15 +211,21 @@
                                                 <a href="#" class="btn btn-circle btn-warning btn-sm" data-toggle="modal" data-target="#edit_peserta<?= $gl->id_peserta ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="<?= site_url('admin/delete_peserta/' . $gl->id_peserta . '?section=' . $title) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin Data Peserta akan dihapus permanen?')">
-                                                    <i class=" fas fa-trash"></i>
+                                                <?php if ($this->session->userdata('level') === '0'): ?>
+                                                    <a href="<?= site_url('admin/delete_peserta/' . $gl->id_peserta . '?section=' . $title) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin Data Peserta akan dihapus permanen?')">
+                                                        <i class=" fas fa-trash"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                                <a href="<?= base_url('admin/show_invitation/' . $gl->id_peserta); ?>" class="btn btn-info  btn-sm" target="_blank">
+                                                    <i class="fas fa-print"></i>
                                                 </a>
-
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <!-- Tombol download muncul hanya saat ada checkbox yang dicentang -->
+                            <button id="downloadZip" class="btn btn-primary" style="display: none;">Download File as ZIP</button>
                         </div>
                     </div>
                 </div>

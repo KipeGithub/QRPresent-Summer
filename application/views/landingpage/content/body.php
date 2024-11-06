@@ -2,9 +2,15 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container">
+        <div class="container-fluid">
+            <!-- <div class="d-flex justify-content-center" style="margin-bottom: -10px;margin-top: -10px;">
+                <img src="<?= base_url('assets/image/partel.png') ?>" alt="Partel" style="width: 5%;" class="align-middle">
+            </div> -->
+            <div class="d-flex justify-content-center mb-3 mt-3">
+                <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 30%;" class="align-middle">
+            </div>
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <h1 class="m-0 font-weight-bold"> Live Presensi Kehadiran</h1> <span class="p text-navy ">SMK Pariwisata Telkom Bandung</span>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -14,7 +20,7 @@
 
     <!-- Main content -->
     <div class="content">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <!-- /.col-md-6 -->
                 <div class="col-lg-12">
@@ -26,28 +32,32 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped ">
-                                    <thead>
+                                <table id="example1" class="table table-bordered table-striped" style="color: black !important;">
+                                    <thead class="text-center">
                                         <tr class="text-uppercase text-white align-center">
-                                            <th class="align-middle bg-navy">NAMA LENGKAP</th>
-                                            <th class="align-middle bg-navy">KELAS</th>
-                                            <th class="align-middle bg-navy">PLOTTING</th>
-                                            <th class="align-middle bg-navy">KETERANGAN</th>
-                                            <th class="align-middle bg-navy">STATUS PRESENSI</th>
+                                            <th class="align-middle bg-navy">Nama Lengkap</th>
+                                            <th class="align-middle bg-navy">Kelas</th>
+                                            <th class="align-middle bg-navy">Plotting</th>
+                                            <th class="align-middle bg-navy">Keterangan</th>
+                                            <th class="align-middle bg-navy">Status Presensi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($get_live as $gl) :
-                                        ?>
+                                    <tbody class="text-center">
+                                        <?php foreach ($get_live as $gl) : ?>
                                             <tr>
                                                 <td><?= $gl->nama_lengkap ?></td>
                                                 <td><?= $gl->kelas ?></td>
                                                 <td><?= $gl->plotting ?></td>
                                                 <td><?= $gl->status_peserta ?></td>
-                                                <td><?= $gl->status_presensi ?></td>
-
+                                                <td>
+                                                    <?php
+                                                    $class = 'secondary';
+                                                    if ($gl->status_presensi == 'PREPARE') $class = 'warning';
+                                                    elseif ($gl->status_presensi == 'SUCCESS') $class = 'success';
+                                                    elseif ($gl->status_presensi == 'FAILED') $class = 'danger';
+                                                    ?>
+                                                    <button type="button" class="btn btn-<?= $class ?> btn-sm text-white"><?= $gl->status_presensi ?></button>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

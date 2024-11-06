@@ -30,7 +30,7 @@ class Auth extends CI_Controller
         ]);
 
         // Redirect ke halaman login atau halaman lain yang diinginkan
-        redirect(base_url('Auth'));
+        redirect(base_url('LandingPage'));
     }
 
     public function proses_login()
