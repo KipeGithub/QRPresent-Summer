@@ -34,33 +34,19 @@
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
-<!-- <script>
-    $(document).ready(function() {
-        // Inisialisasi DataTables dengan pengaturan tampilan yang diinginkan
-        var oTable = $("#example1").DataTable({
-            "bJQueryUI": true,
-            "bStateSave": true,
-            "iDisplayLength": 50,
-            "aaSorting": [
-                [4, "desc"],
-                [5, "asc"]
-            ],
-            "aLengthMenu": [
-                [10, 25, 50, 100, -1],
-                [10, 25, 50, 100, "All"]
-            ],
-            "sPaginationType": "full_numbers",
-            "sScrollY": "35em", // Tinggi scrollable area untuk tabel
-            "sScrollX": "100%", // Lebar scrollable area untuk tabel
-            "bScrollCollapse": true
-        });
+<style>
+    .compact-table td,
+    .compact-table th {
+        padding: 4px 8px !important;
+        font-size: 15px;
+        vertical-align: middle;
+    }
 
-        // Refresh DataTables saat ukuran jendela diubah
-        $(window).resize(function() {
-            oTable.draw(false); // Redraw tanpa mengubah data atau halaman
-        });
-    });
-</script> -->
+    .compact-table .btn {
+        padding: 2px 6px !important;
+        font-size: 13px;
+    }
+</style>
 </body>
 
 </html>

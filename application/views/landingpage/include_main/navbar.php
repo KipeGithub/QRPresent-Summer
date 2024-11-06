@@ -4,7 +4,7 @@
             <div class="container-fluid">
 
                 <a href="<?= base_url('') ?>" class="navbar-brand">
-                    <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 150px; height: auto;margin-top:2px;">
+                    <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 10%; height: auto;margin-top:2px;">
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

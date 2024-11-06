@@ -6,12 +6,12 @@
             <!-- <div class="d-flex justify-content-center" style="margin-bottom: -10px;margin-top: -10px;">
                 <img src="<?= base_url('assets/image/partel.png') ?>" alt="Partel" style="width: 5%;" class="align-middle">
             </div> -->
-            <div class="d-flex justify-content-center mb-3 mt-3">
-                <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 30%;" class="align-middle">
-            </div>
-            <div class="row mb-2">
+            <!-- <div class="d-flex justify-content-center mb-3 mt-3">
+                <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 25%;" class="align-middle">
+            </div> -->
+            <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="m-0 font-weight-bold"> Live Presensi Kehadiran</h1> <span class="p text-navy ">SMK Pariwisata Telkom Bandung</span>
+                    <h1 class="m-0 font-weight-bold" style="font-size: 25px;"> Live Presensi Kehadiran</h1> <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -27,12 +27,11 @@
                     <div class="card card-navy card-outline">
                         <div class="card">
                             <div class="card-header">
-                                <span class="p text-gray card-title">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Already Present'.</span>
-
+                                <span class="p text-gray card-title" style="font-size: 12px;">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Already Present'.</span>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped" style="color: black !important;">
+                                <table id="example1" class="table table-bordered table-striped compact-table" style="color: black !important;">
                                     <thead class="text-center">
                                         <tr class="text-uppercase text-white align-center">
                                             <th class="align-middle bg-navy">Nama Lengkap</th>
