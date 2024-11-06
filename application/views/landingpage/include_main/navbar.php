@@ -2,15 +2,12 @@
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container-fluid">
-
                 <a href="<?= base_url('') ?>" class="navbar-brand">
-                    <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 10%; height: auto;margin-top:2px;">
+                    <img src="<?= base_url('assets/image') ?>/LOGO_summer_scape.png" alt="Logo Summer" class="brand-image" style="width: 10%; height: auto;padding-top:2px;">
                 </a>
-
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
 
                 </div>
