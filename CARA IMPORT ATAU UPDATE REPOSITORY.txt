@@ -26,3 +26,4 @@ BESOK AGENDA
 LANDING PAGE:
 - nama lengkap ada tulisan new update dan naikan paling atas jika status berubah time_approve
 - pas bagian check in scanner tambahkan time_approve NOW
+- di tiap row akan naik paling atas ketika sudah di approve dan time_approve terkini sesuai dengan waktu sekarang

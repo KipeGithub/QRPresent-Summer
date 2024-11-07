@@ -41,7 +41,15 @@
                             <tbody class="text-center">
                                 <?php foreach ($get_live as $gl) : ?>
                                     <tr>
-                                        <td><?= $gl->nama_lengkap ?></td>
+                                        <td>
+                                            <?= $gl->nama_lengkap ?>
+                                            <?php
+                                            $tanggal = date('Y-m-d');
+                                            if ($gl->tgl_input == $tanggal):
+                                            ?>
+                                                <span class="right badge badge-success">New Data</span>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?= $gl->kelas ?></td>
                                         <td><?= $gl->plotting ?></td>
                                         <td><?= $gl->status_peserta ?></td>

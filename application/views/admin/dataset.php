@@ -170,7 +170,6 @@
                                                     <span class="right badge badge-success">New Data</span>
                                                 <?php endif; ?>
                                             </td>
-
                                             <td><?= $gl->nama_depan ?></td>
                                             <td><?= $gl->nama_belakang ?></td>
                                             <td><?= $gl->kelas ?></td>
@@ -198,14 +197,17 @@
                                                 <?php endif; ?>
                                             </script>
                                             <td>
-                                                <?php if ($gl->status_presensi == 'PREPARE') :
-                                                    $class = 'warning';
-                                                elseif ($gl->status_presensi == 'SUCCESS') :
-                                                    $class = 'success';
-                                                elseif ($gl->status_presensi == 'FAILED') :
-                                                    $class = 'danger';
-                                                endif; ?>
-                                                <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
+                                                <?php
+                                                if ($gl->status_presensi == 'PREPARE') :
+                                                    $class = 'warning'; ?>
+                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
+                                                <?php elseif ($gl->status_presensi == 'SUCCESS') :
+                                                    $class = 'success'; ?>
+                                                    <a href="#" class="btn btn-<?= $class ?> btn-sm" data-toggle="modal" data-target="#view_present<?= $gl->id_peserta ?>"><?= $gl->status_presensi ?></a>
+                                                <?php elseif ($gl->status_presensi == 'FAILED') :
+                                                    $class = 'danger'; ?>
+                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
+                                                <?php endif; ?>
                                             </td>
                                             <td align="center">
                                                 <a href="#" class="btn btn-circle btn-warning btn-sm" data-toggle="modal" data-target="#edit_peserta<?= $gl->id_peserta ?>">
@@ -364,6 +366,30 @@
                         <!-- /.modal-content -->
                     </div>
                     <!-- /.modal-dialog -->
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <?php foreach ($get_live as $gl): ?>
+            <div class="modal fade" id="view_present<?= $gl->id_peserta ?>">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <span class="h5 font-weight-bold modal-title">Detail Present</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Waktu Present</label>
+                                        <input type="datetime-local" class="form-control" name="tgl_present" value="<?= $gl->tgl_present ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -22,4 +22,11 @@ class Scanning_model extends CI_Model
         $this->db->where('id_peserta', $id_peserta);
         return $this->db->update('peserta_master', $data);
     }
+    public function get_all_participants()
+    {
+        $this->db->order_by("status_presensi = 'SUCCESS'", "DESC");
+        $this->db->order_by("tgl_present", "ASC"); // Mengurutkan yang SUCCESS berdasarkan tgl_present terawal
+        $query = $this->db->get("peserta_master"); // Ganti dengan nama tabel Anda
+        return $query->result();
+    }
 }

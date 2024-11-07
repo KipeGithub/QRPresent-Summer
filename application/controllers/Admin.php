@@ -392,25 +392,25 @@ class Admin extends CI_Controller
         if ($peserta) {
             if ($peserta->status_presensi == 'SUCCESS') {
                 echo json_encode(['status' => 'warning', 'message' => 'Peserta ini sudah check-in.']);
-                $this->session->set_flashdata('toast', [
-                    'class' => 'bg-danger',
-                    'title' => 'Gagal',
-                    'body' => 'Peserta ini sudah check-in!'
-                ]);
             } else {
-                // Ubah status menjadi SUCCESS
-                $update_data = ['status_presensi' => 'SUCCESS'];
+                // Ubah status menjadi SUCCESS dan set tgl_present ke waktu saat ini
+                $update_data = [
+                    'status_presensi' => 'SUCCESS',
+                    'tgl_present' => date('Y-m-d H:i:s') // Mengisi tgl_present dengan waktu saat ini
+                ];
                 $this->Scanning_model->update_peserta($id_peserta, $update_data);
-                $this->session->set_flashdata('toast', [
-                    'class' => 'bg-success',
-                    'title' => 'Success',
-                    'body' => 'Check-in berhasil!'
-                ]);
                 echo json_encode(['status' => 'success', 'message' => 'Check-in berhasil!']);
             }
         } else {
             // Jika data peserta tidak ditemukan
             echo json_encode(['status' => 'error', 'message' => 'Peserta tidak ditemukan.']);
         }
+    }
+    public function get_live_data()
+    {
+        $data = $this->Scanning_model->get_all_participants(); // Sesuaikan dengan model Anda untuk mengambil data
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['success' => true, 'data' => $data]));
     }
 }
