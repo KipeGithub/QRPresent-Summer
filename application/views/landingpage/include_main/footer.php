@@ -29,15 +29,13 @@
         // Inisialisasi DataTable
         var table = $("#example1").DataTable({
             "responsive": true,
+            "paging": false, // Nonaktifkan pagination agar semua data ditampilkan dalam satu halaman
             "lengthChange": false,
             "autoWidth": false,
             "searching": false,
-            "buttons": [],
+            "ordering": false, // Nonaktifkan pengurutan kolom
             "info": false,
             "scrollCollapse": true,
-            "order": [
-                [4, 'desc']
-            ], // Mengurutkan berdasarkan kolom status secara default
         });
 
         // Fungsi untuk mengambil data peserta terbaru
@@ -54,12 +52,12 @@
                         // Tambahkan setiap peserta ke tabel, dengan yang `SUCCESS` di urutan teratas
                         response.data.forEach(function(peserta) {
                             var statusClass = 'secondary';
-                            if (peserta.status_presensi === 'PREPARE') statusClass = 'warning';
+                            if (peserta.status_presensi === 'PREPARE') statusClass = 'danger';
                             else if (peserta.status_presensi === 'SUCCESS') statusClass = 'success';
                             else if (peserta.status_presensi === 'FAILED') statusClass = 'danger';
 
                             var badgeNew = (peserta.tgl_input === '<?= date('Y-m-d') ?>') ?
-                                '<span class="right badge badge-success">New Data</span>' : '';
+                                '<span class="right badge badge-success">*</span>' : '';
 
                             table.row.add([
                                 peserta.nama_lengkap + ' ' + badgeNew,

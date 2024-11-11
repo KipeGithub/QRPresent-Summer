@@ -6,9 +6,9 @@
             <!-- <div class="d-flex justify-content-center" style="margin-bottom: -10px;margin-top: -10px;">
                 <img src="<?= base_url('assets/image/partel.png') ?>" alt="Partel" style="width: 5%;" class="align-middle">
             </div> -->
-            <!-- <div class="d-flex justify-content-center mb-3 mt-3">
+            <div class="d-flex justify-content-center mb-3 mt-3">
                 <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 25%;" class="align-middle">
-            </div> -->
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="m-0 font-weight-bold" style="font-size: 25px;"> Live Presensi Kehadiran</h1> <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
@@ -47,7 +47,7 @@
                                             $tanggal = date('Y-m-d');
                                             if ($gl->tgl_input == $tanggal):
                                             ?>
-                                                <span class="right badge badge-success">New Data</span>
+                                                <span class="right badge badge-success">*</span>
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $gl->kelas ?></td>
@@ -56,7 +56,7 @@
                                         <td>
                                             <?php
                                             $class = 'secondary';
-                                            if ($gl->status_presensi == 'PREPARE') $class = 'warning';
+                                            if ($gl->status_presensi == 'PREPARE') $class = 'danger';
                                             elseif ($gl->status_presensi == 'SUCCESS') $class = 'success';
                                             elseif ($gl->status_presensi == 'FAILED') $class = 'danger';
                                             ?>

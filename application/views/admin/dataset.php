@@ -167,7 +167,7 @@
                                                 $tanggal = date('Y-m-d');
                                                 if ($gl->tgl_input == $tanggal):
                                                 ?>
-                                                    <span class="right badge badge-success">New Data</span>
+                                                    <span class="right badge badge-success">*</span>
                                                 <?php endif; ?>
                                             </td>
                                             <td><?= $gl->nama_depan ?></td>
@@ -199,7 +199,7 @@
                                             <td>
                                                 <?php
                                                 if ($gl->status_presensi == 'PREPARE') :
-                                                    $class = 'warning'; ?>
+                                                    $class = 'danger'; ?>
                                                     <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
                                                 <?php elseif ($gl->status_presensi == 'SUCCESS') :
                                                     $class = 'success'; ?>

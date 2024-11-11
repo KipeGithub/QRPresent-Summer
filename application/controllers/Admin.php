@@ -174,7 +174,6 @@ class Admin extends CI_Controller
         $section = $this->input->get('section', TRUE);
 
         $query = $this->db->get_where('peserta_master', ['id_peserta' => $id_peserta]);
-
         if ($query->num_rows() > 0) {
             $data['card'] = $query->row();
         } else {
@@ -187,7 +186,6 @@ class Admin extends CI_Controller
             return;
         }
 
-        // Set nama file untuk unduhan PDF
         $data['name_file'] = 'INVITATION CARD - ' . $data['card']->nama_lengkap . ' - SMK Pariwisata Telkom Bandung';
         $data['get_pdf'] = (array) $data['card'];
         $data['barcode'] = $data['card']->barcode;
@@ -197,16 +195,20 @@ class Admin extends CI_Controller
         $qrCode->setSize(80);
         $writer = new PngWriter();
         $qrImage = $writer->write($qrCode)->getDataUri();
+        $data['qr_image'] = $qrImage;
 
-        $data['qr_image'] = $qrImage; // Pass QR image data URI to view
+        // Load background image and convert to base64
+        $backgroundPath = 'assets/image/Undangan_2.jpg'; // Path to background image
+        $backgroundData = file_get_contents($backgroundPath);
+        $backgroundBase64 = base64_encode($backgroundData);
+        $data['bg_image_base64'] = 'data:image/jpeg;base64,' . $backgroundBase64;
 
-        // Generate PDF
         $dompdf = new Dompdf(['enable_remote' => true]);
         $html = $this->load->view('admin/invitation_card', $data, true);
         $dompdf->loadHtml($html);
         $dompdf->setPaper([0, 0, 540, 960]);
-
         $dompdf->render();
+
         $dompdf->stream("INVITATION CARD - " . $data['card']->nama_lengkap . "- SMK Pariwisata Telkom Bandung.pdf", array("Attachment" => false));
     }
 
@@ -245,6 +247,11 @@ class Admin extends CI_Controller
                     $writer = new PngWriter();
                     $qrImage = $writer->write($qrCode)->getDataUri();
                     $data['qr_image'] = $qrImage;
+
+                    $backgroundPath = 'assets/image/Undangan_2.jpg'; // Path to background image
+                    $backgroundData = file_get_contents($backgroundPath);
+                    $backgroundBase64 = base64_encode($backgroundData);
+                    $data['bg_image_base64'] = 'data:image/jpeg;base64,' . $backgroundBase64;
 
                     $dompdf = new Dompdf(['enable_remote' => true]);
                     $html = $this->load->view('admin/invitation_card', $data, true);

@@ -2,9 +2,9 @@
 <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-<!-- <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-  -->
-<script type="text/javascript" src="<?= site_url('assets/instascan.min.js') ?>"></script>
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
+<!-- <script type="text/javascript" src="<?= site_url('assets/instascan.min.js') ?>"></script> -->
 
 <div class="card card-navy card-outline">
     <div class="card-body">
@@ -18,7 +18,6 @@
                         <video id="preview" class="w-100 border border-primary rounded"></video>
                     </div>
                 </div>
-
 
                 <!-- Camera Selection and Scan Results -->
                 <div class="col-12 col-md-4 mt-4 mt-md-0">
