@@ -199,14 +199,18 @@
                                             <td>
                                                 <?php
                                                 if ($gl->status_presensi == 'PREPARE') :
-                                                    $class = 'danger'; ?>
-                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
+                                                    $class = 'danger';
+                                                    $text = 'Belum Hadir';
+                                                ?>
+                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $text ?></button>
                                                 <?php elseif ($gl->status_presensi == 'SUCCESS') :
-                                                    $class = 'success'; ?>
-                                                    <a href="#" class="btn btn-<?= $class ?> btn-sm" data-toggle="modal" data-target="#view_present<?= $gl->id_peserta ?>"><?= $gl->status_presensi ?></a>
+                                                    $class = 'success';
+                                                    $text = 'Hadir'; ?>
+                                                    <a href="#" class="btn btn-<?= $class ?> btn-sm" data-toggle="modal" data-target="#view_present<?= $gl->id_peserta ?>"><?= $text ?></a>
                                                 <?php elseif ($gl->status_presensi == 'FAILED') :
-                                                    $class = 'danger'; ?>
-                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $gl->status_presensi ?></button>
+                                                    $class = 'danger';
+                                                    $text = 'Gagal Hadir'; ?>
+                                                    <button type="button" class="btn btn-<?= $class ?> text-white"><?= $text ?></button>
                                                 <?php endif; ?>
                                             </td>
                                             <td align="center">

@@ -6,17 +6,16 @@
             <!-- <div class="d-flex justify-content-center" style="margin-bottom: -10px;margin-top: -10px;">
                 <img src="<?= base_url('assets/image/partel.png') ?>" alt="Partel" style="width: 5%;" class="align-middle">
             </div> -->
-            <div class="d-flex justify-content-center mb-3 mt-3">
-                <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 25%;" class="align-middle">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <h1 class="m-0 font-weight-bold" style="font-size: 25px;">Live Presensi Kehadiran</h1>
+                    <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
+                </div>
+                <div class="col-sm-6 d-flex justify-content-end">
+                    <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 30%;" class="align-middle mr-3">
+                </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1 class="m-0 font-weight-bold" style="font-size: 25px;"> Live Presensi Kehadiran</h1> <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
-                </div>
-                <div class="col-sm-12">
-                    <span class="p m-0 text-gray card-title" style="font-size: 11px;">After the user scans the barcode, the system automatically changes 'Status Presensi' to 'Already Present'.</span>
-                </div>
-            </div><!-- /.row -->
+
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -56,11 +55,18 @@
                                         <td>
                                             <?php
                                             $class = 'secondary';
-                                            if ($gl->status_presensi == 'PREPARE') $class = 'danger';
-                                            elseif ($gl->status_presensi == 'SUCCESS') $class = 'success';
-                                            elseif ($gl->status_presensi == 'FAILED') $class = 'danger';
+                                            if ($gl->status_presensi == 'PREPARE') {
+                                                $text = 'Belum Hadir';
+                                                $class = 'danger';
+                                            } elseif ($gl->status_presensi == 'SUCCESS') {
+                                                $text = 'Hadir';
+                                                $class = 'success';
+                                            } elseif ($gl->status_presensi == 'FAILED') {
+                                                $text = 'Gagal Hadir';
+                                                $class = 'danger';
+                                            }
                                             ?>
-                                            <button type="button" class="btn btn-<?= $class ?> btn-sm text-white"><?= $gl->status_presensi ?></button>
+                                            <button type="button" class="btn btn-<?= $class ?> text-white"><?= $text ?></button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
