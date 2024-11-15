@@ -52,21 +52,30 @@
                         // Tambahkan setiap peserta ke tabel, dengan yang `SUCCESS` di urutan teratas
                         response.data.forEach(function(peserta) {
                             var statusClass = 'secondary';
-                            if (peserta.status_presensi === 'PREPARE') statusClass = 'danger';
-                            else if (peserta.status_presensi === 'SUCCESS') statusClass = 'success';
-                            else if (peserta.status_presensi === 'FAILED') statusClass = 'danger';
+                            var statusText = 'Unknown';
 
-                            var badgeNew = (peserta.tgl_input === '<?= date('Y-m-d') ?>') ?
-                                '<span class="right badge badge-success">*</span>' : '';
+                            if (peserta.status_presensi === 'PREPARE') {
+                                statusClass = 'danger';
+                                statusText = 'Belum Hadir';
+                            } else if (peserta.status_presensi === 'SUCCESS') {
+                                statusClass = 'success';
+                                statusText = 'Hadir';
+                            } else if (peserta.status_presensi === 'FAILED') {
+                                statusClass = 'danger';
+                                statusText = 'Gagal Hadir';
+                            }
+
+                            var badgeNew = (peserta.tgl_input === '<?= date('Y-m-d') ?>') ? '<span class="right badge badge-success">*</span>' : '';
 
                             table.row.add([
                                 peserta.nama_lengkap + ' ' + badgeNew,
                                 peserta.kelas,
                                 peserta.plotting,
                                 peserta.status_peserta,
-                                `<button type="button" class="btn btn-${statusClass} btn-sm text-white">${peserta.status_presensi}</button>`
+                                `<button type="button" class="btn btn-${statusClass} btn-sm text-white">${statusText}</button>`
                             ]);
                         });
+
 
                         // Perbarui tabel DataTable
                         table.draw();

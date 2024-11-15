@@ -180,6 +180,16 @@
                                 </p>
                             </a>
                         </li>
+                        <?php if ($this->session->userdata('level') === '0'): ?>
+                            <li class="nav-item ">
+                                <a href="<?= base_url('admin/account_center?section=Center Account') ?>" class="nav-link <?php if ($this->input->get('section') === 'Center Account') echo 'active'; ?>">
+                                    <i class="nav-icon far fa-address-book"></i>
+                                    <p>
+                                        Center Account
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

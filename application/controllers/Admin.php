@@ -420,4 +420,64 @@ class Admin extends CI_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode(['success' => true, 'data' => $data]));
     }
+    public function account_center()
+    {
+        $data['title'] = $this->input->get('section', TRUE);
+        $data['account']  = $this->db->query("SELECT * FROM account")->result();
+
+        if ($this->session->userdata('level') === '0') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('admin/account_center', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            redirect('auth');
+        }
+    }
+    public function proses_account()
+    {
+        $section = $this->input->get('section', TRUE);
+
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $formData = [
+                'email' => $this->input->post('email', TRUE),
+                'password' => password_hash($this->input->post('password', TRUE), PASSWORD_BCRYPT),
+                'level' => '1',
+            ];
+
+            if ($this->db->insert('account', $formData)) {
+                $this->session->set_flashdata('toast', [
+                    'class' => 'bg-success',
+                    'title' => 'Berhasil',
+                    'body' => 'Data berhasil disimpan.'
+                ]);
+            } else {
+                $this->session->set_flashdata('toast', [
+                    'class' => 'bg-danger',
+                    'title' => 'Gagal',
+                    'body' => 'Gagal menyimpan data. Silakan coba lagi.'
+                ]);
+            }
+        } else {
+            $this->session->set_flashdata('toast', [
+                'class' => 'bg-danger',
+                'title' => 'Gagal',
+                'body' => 'Metode permintaan tidak valid.'
+            ]);
+        }
+        redirect('Admin/account_center?section=' . $section);
+    }
+    public function delete_account($id)
+    {
+        $section = $this->input->get('section', TRUE);
+        $where = array('id' => $id);
+
+        $this->db->delete('account', $where);
+        $this->session->set_flashdata('toast', [
+            'class' => 'bg-success',
+            'title' => 'Berhasil',
+            'body' => 'Data berhasil dihapus.'
+        ]);
+        redirect('Admin/account_center?section=' . $section);
+    }
 }
