@@ -88,6 +88,32 @@
         setInterval(fetchData, 5000); // Sesuaikan interval sesuai kebutuhan
     });
 </script>
+<script>
+    $(document).ready(function() {
+        // Fungsi untuk mengambil data rekap
+        function updateRekapData() {
+            $.ajax({
+                url: '<?= base_url("Admin/get_rekap_data") ?>', // Ganti dengan URL controller Anda
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Memperbarui elemen dengan ID success_count dan prepare_count
+                    $('#success_count').text(data.success_count);
+                    $('#prepare_count').text(data.prepare_count);
+                },
+                error: function(xhr, status, error) {
+                    console.log("Terjadi kesalahan: " + error);
+                }
+            });
+        }
+
+        // Panggil fungsi updateRekapData setiap 5 detik
+        setInterval(updateRekapData, 5000);
+
+        // Panggil fungsi untuk pertama kali saat halaman dimuat
+        updateRekapData();
+    });
+</script>
 
 <style>
     .compact-table td,

@@ -33,6 +33,25 @@ class Admin extends CI_Controller
             redirect('auth');
         }
     }
+    public function get_rekap_data()
+    {
+        // Query untuk menghitung jumlah peserta dengan status 'SUCCESS'
+        $this->db->where('status_presensi', 'SUCCESS');
+        $success_count = $this->db->count_all_results('peserta_master');
+
+        // Query untuk menghitung jumlah peserta dengan status 'PREPARE'
+        $this->db->where('status_presensi', 'PREPARE');
+        $prepare_count = $this->db->count_all_results('peserta_master');
+
+        // Membuat array data yang akan dikembalikan dalam format JSON
+        $data = [
+            'success_count' => $success_count,
+            'prepare_count' => $prepare_count
+        ];
+
+        // Mengembalikan data dalam format JSON
+        echo json_encode($data);
+    }
     public function importdata()
     {
         $data['title'] = $this->input->get('section', TRUE);

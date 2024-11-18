@@ -6,15 +6,50 @@
             <!-- <div class="d-flex justify-content-center" style="margin-bottom: -10px;margin-top: -10px;">
                 <img src="<?= base_url('assets/image/partel.png') ?>" alt="Partel" style="width: 5%;" class="align-middle">
             </div> -->
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <h1 class="m-0 font-weight-bold" style="font-size: 25px;">Live Presensi Kehadiran</h1>
-                    <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
-                </div>
-                <div class="col-sm-6 d-flex justify-content-end">
-                    <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 30%;" class="align-middle mr-3">
+            <div class="container-fluid">
+                <!-- Title and Subtitle -->
+                <div class="row align-items-center">
+                    <div class="col-sm-4">
+                        <h1 class="m-0 font-weight-bold" style="font-size: 25px;">Live Presensi Kehadiran</h1>
+                        <span class="p text-navy" style="font-size: 15px;">SMK Pariwisata Telkom Bandung</span>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="card shadow">
+                            <div class="card-header py-3">
+                                <p class="text-success m-0 font-weight-bold">REKAP HADIR</p>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="m-0 font-weight-bold text-center" id="success_count">
+                                    <!-- Jumlah peserta sukses akan muncul di sini -->
+                                    -
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card for PREPARE Status -->
+                    <div class="col-sm-2">
+                        <div class="card shadow">
+                            <div class="card-header py-3">
+                                <p class="text-danger m-0 font-weight-bold">REKAP BELUM HADIR</p>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="m-0 font-weight-bold text-center" id="prepare_count">
+                                    <!-- Jumlah peserta prepare akan muncul di sini -->
+                                    -
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image on the Right -->
+                    <div class="col-sm-4 d-flex justify-content-end">
+                        <img src="<?= base_url('assets/image/Judul.png') ?>" alt="Heading_Summer" style="width: 60%;" class="align-middle mr-3">
+                    </div>
                 </div>
             </div>
+
 
         </div><!-- /.container-fluid -->
     </div>
